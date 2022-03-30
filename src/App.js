@@ -1,25 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import React, { useState} from 'react'
+import StudentDashBoard from './Components/StudentDashboard'
+import CoursePageView from './Components/CoursePageView'
+const App=()=>{
+  const [username, setUsername] = useState('Mohan Vamsi')
+  const [StudentDashboardView, setStudentDashboardView] = useState(true)
+  const [CourseView, setCourseView] = useState(false)
+  const handleCourseClick = async(event) => {
+    event.preventDefault()
+    setCourseView(true)
+    setStudentDashboardView(false)
+  }
+  const setDefault=()=>{
+    setCourseView(false)
+    setStudentDashboardView(true)
+  }
+  if(StudentDashboardView===true)
+  {
+    return(
+      <div>
+        <StudentDashBoard 
+        username={username}
+        handleCourseClick={handleCourseClick}
+        />
+      </div>
+    )
+  }
+  return(
+    <div>
+      <CoursePageView 
+      setDefault={setDefault}
+      />
     </div>
-  );
+  )
+  
+
 }
 
 export default App;
