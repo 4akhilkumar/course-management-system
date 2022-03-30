@@ -1,8 +1,27 @@
 import React from 'react'
 import Image from '../Static/DefaultUserProfilePhoto/S.png'
+import Courses from './Courses/Courses'
+import CourseView from './Courses/CourseView'
+const Navbar=(props)=>{
 
-const Navbar=()=>{
+    const resetDefaults=()=>{
+        props.setviewCoursesList(true)
+        props.setViewCourses([false])
+    }
+
+  const  RenderElements=()=>{
+
+    if(props.viewCoursesList===true)
+    {
+           return <Courses setViewCourses={props.setViewCourses} setviewCoursesList={props.setviewCoursesList}/>
+    }
+    else if(props.viewCourses[0]===true)
+    {
+        return <CourseView resetDefaults={resetDefaults}/>;        
+    }
+     }
     return(
+        
         <div>
             <input type="checkbox" name="toggle-checkbox" id="menu-toggle"/>
             <div class="overlay">
@@ -34,7 +53,7 @@ const Navbar=()=>{
                         </div>
                         <div class="avatar-info">
                             <div class="avatar-text">
-                                <h4>Sai Akhil Kumar Reddy N</h4>
+                                <h4>{props.username}</h4>
                                 <small>@4akhilkumar</small>
                             </div>
                             <span class="fas fa-angle-double-down"></span>
@@ -72,7 +91,7 @@ const Navbar=()=>{
                     </div>
                 </header>
                 <main>
-                    
+                    <RenderElements/>
                 </main>
             </div>
         </div>

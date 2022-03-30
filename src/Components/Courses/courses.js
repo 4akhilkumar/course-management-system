@@ -1,6 +1,13 @@
 import React from 'react';
 
-const Courses = () => {
+const Courses = (props) => {
+
+  const ViewCourseHandler=()=>{
+    props.setviewCoursesList(false)
+    props.setViewCourses([true])
+  }
+
+
     return (
         <div>
             <section>
@@ -29,7 +36,7 @@ const Courses = () => {
                         </li>
                       </ul>
                       <div className="staff-profile-links">
-                        <button className="staff-profile-view" onclick="document.location='#'">View course</button>
+                        <button className="staff-profile-view" onClick={ViewCourseHandler}>View course</button>
                       </div>
                     </div>
                 </div>
