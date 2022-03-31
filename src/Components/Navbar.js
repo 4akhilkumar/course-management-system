@@ -4,6 +4,7 @@ import Courses from './Courses/Courses'
 import CourseView from './Courses/CourseView'
 const Navbar=(props)=>{
 
+
     const resetDefaults=()=>{
         props.setviewCoursesList(true)
         props.setViewCourses([false])
@@ -71,7 +72,9 @@ const Navbar=(props)=>{
                             <li>
                                 <a hrefLang='#'>
                                     <span class="fas fa-sign-out-alt"></span>
-                                    <span>Logout</span>
+                                    <span>
+                                    <button onClick={props.Logout}>Logout</button>
+                                    </span>
                                 </a>
                             </li>
                         </ul>

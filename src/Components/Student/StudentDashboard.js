@@ -14,6 +14,7 @@ const [viewCourses,setViewCourses]=useState(courseValues)
            setviewCoursesList={setviewCoursesList}
            viewCourses={viewCourses}
            setViewCourses={setViewCourses}
+           Logout={props.Logout}
            />
        </div>
     )
