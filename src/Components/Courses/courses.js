@@ -4,26 +4,21 @@ const Courses = (props) => {
 
   const ViewCourseHandler=()=>{
     props.setviewCoursesList(false)
-    props.setViewCourses([true])
+    props.setViewCourses(true)
   }
 
-
+  const CourseCard=({info})=>{
     return (
-        <div>
-            <section>
-                <h3 className="section-head">Courses</h3>
-            </section>
-            <div className="list-all-faculty">
-                <div className="staff-profile-card">
+      <div className="staff-profile-card">
                     <div className="staff-profile-img">
                     </div>
                     <div className="staff-profile-infos">
                       <div className="staff-profile-name">
-                        <h2>Techincal Skilling</h2>
-                        <h4>@19TS1901</h4>
+                        <h2>{info.name}</h2>
+                        <h4>{info.code}</h4>
                       </div>
                       <p className="staff-profile-text">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime, nihil.
+                        {info.description}
                       </p>
                       <ul className="staff-profile-stats">
                         <li>
@@ -40,6 +35,19 @@ const Courses = (props) => {
                       </div>
                     </div>
                 </div>
+    )
+  }
+
+    return (
+        <div>
+            <section>
+                <h3 className="section-head">Courses</h3>
+            </section>
+            <div className="list-all-faculty">
+                
+            {props.Courses.map((course,i)=><CourseCard info={course}/>)}
+
+
             </div>
         </div>
     );

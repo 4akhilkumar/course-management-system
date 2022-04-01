@@ -130,6 +130,7 @@ body {
 
 a {
   color: var(--anchor-tag-color);
+  cursor: pointer;
 }
 
 .underline {

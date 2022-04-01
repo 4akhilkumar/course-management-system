@@ -10,6 +10,7 @@ const LoginForm=({
    password})=>{
 
     return(
+        <body id='loginpage'>
 <div class="container">
         
         <div class="header">
@@ -59,6 +60,7 @@ const LoginForm=({
             </button>
         </form>
     </div>
+    </body>
     )
 }
 export default LoginForm

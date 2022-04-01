@@ -9,11 +9,16 @@ const App=()=>{
   const [password, setPassword] = useState('')
   const [user,setUser] = useState(null)
   const [errorMessage,setErrorMessage]=useState(null)
+
     useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('LoggedInUser')
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
+      // CourseService().then(response => {
+      //   setCourses(response)
+      // })
+      // console.log(courses)  
     }
   }, [])
 
@@ -23,7 +28,9 @@ const App=()=>{
       const user = await SignInService({
         username, password,
       })
-      console.log(user)
+    //  const response=await CourseService()
+    //  setCourses(response)
+      // console.log(user.user)
       if(user)
       {
       window.localStorage.setItem('LoggedInUser', JSON.stringify(user))
@@ -45,11 +52,12 @@ const App=()=>{
     setUser(null)
 
   }
+
  
   if(user===null){
-
   return(
     <div>
+      
       <LoginForm
         username={username}
         password={password}
@@ -57,13 +65,24 @@ const App=()=>{
         handlePasswordChange={({ target }) => setPassword(target.value)}
         handleSubmit={handleLogin}
       />
+      <h3 align='center'>{errorMessage}</h3>
     </div>
   )
   }
+  else if(user.user.group==="Student"){
+    return(
+      <StudentDashboard 
+      first_name={user.user.first_name} 
+      username={user.user.username} 
+      userid={user.user.id}
+      Logout={Logout}/>
+    )
+  }
   else{
     return(
-
-      <StudentDashboard username={username} Logout={Logout}/>
+      <div>
+        <h1>No Dashboard</h1>
+      </div>
     )
   }
 

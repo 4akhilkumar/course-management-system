@@ -7,16 +7,16 @@ const Navbar=(props)=>{
 
     const resetDefaults=()=>{
         props.setviewCoursesList(true)
-        props.setViewCourses([false])
+        props.setViewCourses(false)
     }
 
   const  RenderElements=()=>{
 
     if(props.viewCoursesList===true)
     {
-           return <Courses setViewCourses={props.setViewCourses} setviewCoursesList={props.setviewCoursesList}/>
+           return <Courses setViewCourses={props.setViewCourses} setviewCoursesList={props.setviewCoursesList} Courses={props.Courses}/>
     }
-    else if(props.viewCourses[0]===true)
+    else if(props.viewCourses===true)
     {
         return <CourseView resetDefaults={resetDefaults}/>;        
     }
@@ -54,8 +54,8 @@ const Navbar=(props)=>{
                         </div>
                         <div class="avatar-info">
                             <div class="avatar-text">
-                                <h4>{props.username}</h4>
-                                <small>@4akhilkumar</small>
+                                <h4>{props.first_name}</h4>
+                                <small>{props.username}</small>
                             </div>
                             <span class="fas fa-angle-double-down"></span>
                         </div>
@@ -64,16 +64,16 @@ const Navbar=(props)=>{
                     <div class="sidebar-menu">
                         <ul>
                             <li>
-                                <a hrefLang='#' class="active">
+                                <a href='/' class="active">
                                     <span class="fas fa-th-large"></span>
                                     <span>Dashboard</span>
                                 </a>
                             </li>
                             <li>
-                                <a hrefLang='#'>
+                                <a href='/' onClick={props.Logout}>
                                     <span class="fas fa-sign-out-alt"></span>
                                     <span>
-                                    <button onClick={props.Logout}>Logout</button>
+                                    Logout
                                     </span>
                                 </a>
                             </li>
