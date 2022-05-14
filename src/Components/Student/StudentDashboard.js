@@ -9,17 +9,18 @@ const StudentDashboard=(props)=>{
     const [viewCourses,setViewCourses]=useState(false)
     useEffect(() => {
 
-        CourseService(props.userid).then(response => {
+        CourseService.getAllStudentCourses(props.userid).then(response => {
             setCourses(response)
           })
         
       }, [props])
 
 
-
     return(
+        
        <div>
            <Navbar
+           userid={props.userid}
            username={props.username} 
            first_name={props.first_name}
            viewCoursesList={viewCoursesList} 
@@ -27,6 +28,7 @@ const StudentDashboard=(props)=>{
            viewCourses={viewCourses}
            setViewCourses={setViewCourses}
            Courses={courses?courses:[]}
+           userType={'Student'}
            Logout={props.Logout}
            />
        </div>

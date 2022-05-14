@@ -4,6 +4,8 @@ import React, { useState , useEffect} from 'react'
 import StudentDashboard from './Components/Student/StudentDashboard';
 import LoginForm from '../src/Components/Login/LoginForm'
 import SignInService from './Services/SignInService';
+import FacultyDashboard from './Components/Faculty/FacultyDashboard'
+
 const App=()=>{
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -52,7 +54,6 @@ const App=()=>{
     setUser(null)
 
   }
-
  
   if(user===null){
   return(
@@ -81,7 +82,11 @@ const App=()=>{
   else{
     return(
       <div>
-        <h1>No Dashboard</h1>
+        <FacultyDashboard 
+        first_name={user.user.first_name} 
+        username={user.user.username} 
+        userid={user.user.id}
+        Logout={Logout}/>
       </div>
     )
   }

@@ -2,12 +2,13 @@ import React from 'react';
 
 const Courses = (props) => {
 
-  const ViewCourseHandler=()=>{
-    props.setviewCoursesList(false)
-    props.setViewCourses(true)
-  }
-
   const CourseCard=({info})=>{
+    const ViewCourseHandler=(e)=>{
+      e.preventDefault()
+      props.setCourse(info)
+      props.setviewCoursesList(false)
+      props.setViewCourses(true)
+    }
     return (
       <div className="staff-profile-card">
                     <div className="staff-profile-img">
@@ -22,16 +23,18 @@ const Courses = (props) => {
                       </p>
                       <ul className="staff-profile-stats">
                         <li>
-                          <h3>11</h3>
+                          <h3>2</h3>
                           <h4>Assignments</h4>
                         </li>
                         <li>
-                          <h3>2</h3>
+                          <h3>0</h3>
                           <h4>Projects</h4>
                         </li>
                       </ul>
                       <div className="staff-profile-links">
-                        <button className="staff-profile-view" onClick={ViewCourseHandler}>View course</button>
+                        <button className="staff-profile-view" onClick={ViewCourseHandler}>
+                          Show Course
+                        </button>
                       </div>
                     </div>
                 </div>

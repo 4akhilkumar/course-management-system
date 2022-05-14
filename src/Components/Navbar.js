@@ -1,24 +1,32 @@
 import React from 'react'
 import Image from '../Static/DefaultUserProfilePhoto/S.png'
 import Courses from './Courses/Courses'
-import CourseView from './Courses/CourseView'
+import StudentCourseView from './Courses/StudentCourseView'
+import FacultyCourseView from './Courses/FacultyCourseView'
+import { useState } from 'react'
 const Navbar=(props)=>{
 
-
+    const [course,setCourse]=useState(null)
     const resetDefaults=()=>{
+        
         props.setviewCoursesList(true)
         props.setViewCourses(false)
+        setCourse(null)
     }
 
   const  RenderElements=()=>{
 
     if(props.viewCoursesList===true)
     {
-           return <Courses setViewCourses={props.setViewCourses} setviewCoursesList={props.setviewCoursesList} Courses={props.Courses}/>
+           return <Courses setViewCourses={props.setViewCourses} setviewCoursesList={props.setviewCoursesList} Courses={props.Courses} setCourse={setCourse} userid={props.userid}/>
     }
-    else if(props.viewCourses===true)
+    else if(props.viewCourses===true && props.userType==='Faculty')
     {
-        return <CourseView resetDefaults={resetDefaults}/>;        
+        return <FacultyCourseView resetDefaults={resetDefaults} course={course} userid={props.userid} username={props.username}/>;        
+    }
+    else if(props.viewCourses===true && props.userType==='Student')
+    {
+        return <StudentCourseView resetDefaults={resetDefaults} course={course} userid={props.userid}/>;        
     }
      }
     return(
